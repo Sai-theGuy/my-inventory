@@ -1,6 +1,6 @@
 using System;
 
-namespace MyInventory.Models
+namespace LifeLine.Models
 {
     public class ErrorViewModel
     {

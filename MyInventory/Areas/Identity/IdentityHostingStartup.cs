@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyInventory.Data;
-using MyInventory.Models;
+using LifeLine.Data;
+using LifeLine.Models;
 
-[assembly: HostingStartup(typeof(MyInventory.Areas.Identity.IdentityHostingStartup))]
-namespace MyInventory.Areas.Identity
+[assembly: HostingStartup(typeof(LifeLine.Areas.Identity.IdentityHostingStartup))]
+namespace LifeLine.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

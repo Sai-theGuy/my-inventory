@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace MyInventory.Models
+namespace LifeLine.Models
 {
     public class ApplicationUser : IdentityUser
     {

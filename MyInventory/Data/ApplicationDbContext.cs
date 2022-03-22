@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-using MyInventory.Models;
+using LifeLine.Models;
 
-namespace MyInventory.Data
+namespace LifeLine.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

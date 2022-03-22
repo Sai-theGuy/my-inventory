@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-using MyInventory.Data;
-using MyInventory.Models;
+using LifeLine.Data;
+using LifeLine.Models;
 
-namespace MyInventory.Controllers
+namespace LifeLine.Controllers
 {
     public class ItemController : Controller
     {

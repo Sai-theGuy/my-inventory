@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyInventory.Migrations
+namespace LifeLine.Migrations
 {
     public partial class InitiateCreate : Migration
     {

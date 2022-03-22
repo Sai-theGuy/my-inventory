@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyInventory.Data;
+using LifeLine.Data;
 
-namespace MyInventory.Migrations
+namespace LifeLine.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220209095006_InitiateCreate")]
@@ -21,7 +21,7 @@ namespace MyInventory.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MyInventory.Models.Item", b =>
+            modelBuilder.Entity("LifeLine.Models.Item", b =>
                 {
                     b.Property<int>("ItemID")
                         .ValueGeneratedOnAdd()

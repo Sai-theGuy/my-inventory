@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyInventory.Data;
+using LifeLine.Data;
 
-namespace MyInventory.Migrations
+namespace LifeLine.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220308094921_CreateIdentitySchema")]
@@ -156,7 +156,7 @@ namespace MyInventory.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MyInventory.Models.ApplicationUser", b =>
+            modelBuilder.Entity("LifeLine.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -227,7 +227,7 @@ namespace MyInventory.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("MyInventory.Models.Item", b =>
+            modelBuilder.Entity("LifeLine.Models.Item", b =>
                 {
                     b.Property<int>("ItemID")
                         .ValueGeneratedOnAdd()
@@ -261,7 +261,7 @@ namespace MyInventory.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("MyInventory.Models.Supplier", b =>
+            modelBuilder.Entity("LifeLine.Models.Supplier", b =>
                 {
                     b.Property<int>("SupplierID")
                         .ValueGeneratedOnAdd()
@@ -307,7 +307,7 @@ namespace MyInventory.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("MyInventory.Models.ApplicationUser", null)
+                    b.HasOne("LifeLine.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -316,7 +316,7 @@ namespace MyInventory.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("MyInventory.Models.ApplicationUser", null)
+                    b.HasOne("LifeLine.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -331,7 +331,7 @@ namespace MyInventory.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyInventory.Models.ApplicationUser", null)
+                    b.HasOne("LifeLine.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -340,7 +340,7 @@ namespace MyInventory.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("MyInventory.Models.ApplicationUser", null)
+                    b.HasOne("LifeLine.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

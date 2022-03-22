@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyInventory.Models;
+using LifeLine.Models;
 
-namespace MyInventory.Areas.Identity.Pages.Account.Manage
+namespace LifeLine.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {

@@ -9,11 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using MyInventory.Data;
-using MyInventory.Models;
+using LifeLine.Data;
+using LifeLine.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyInventory
+namespace LifeLine
 {
     public class Startup
     {

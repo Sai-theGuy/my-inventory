@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using System.ComponentModel.DataAnnotations;
 
-namespace MyInventory.Models
+namespace LifeLine.Models
 {
     public class Item
     {
