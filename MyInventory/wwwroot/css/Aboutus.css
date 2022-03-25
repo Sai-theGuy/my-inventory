@@ -21,8 +21,8 @@ article {
 }
 
 article .container {
-        position: absolute;
-        width: 50%;
+    position: absolute;
+    width: 50%;
 }
 
 article figure {
