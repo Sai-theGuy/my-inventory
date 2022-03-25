@@ -1,22 +1,32 @@
-﻿.cont{
-    position:relative;
+﻿.cont {
+    position: relative;
     height: 100vh;
 }
-.center-text{
+
+.center-text {
     position: absolute;
     left: 18%;
     top: 25%;
 }
-.image1{
+
+    .center-text h6 {
+        width: 40%;
+        font-family: Nunito;
+    }
+
+    .center-text h1 {
+        width: 40%;
+        font-family: Nunito;
+    }
+
+.image1 {
     position: absolute;
-    right: 15%;
+    background-image: url("Images/lifeline medicine pic pt2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20%;
+    height: 40%;
+    width: 40%;
     top: 10%;
-}
-.center-text h6{
-    width: 40%;
-    font-family: Nunito;
-}
-.center-text h1 {
-    width: 40%;
-    font-family: Nunito;
+    left: 50%;
 }
