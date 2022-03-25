@@ -1,0 +1,143 @@
+﻿html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --blue: #385ce4;
+}
+
+body {
+    background-color: var(--blue);
+    margin: 0%;
+    padding: 0%;
+}
+
+article {
+    position: relative;
+    margin-bottom: 40px;
+    height: 420px;
+    display: flex;
+    flex-direction: row;
+}
+
+article .container {
+        position: absolute;
+        width: 50%;
+}
+
+article figure {
+        position: absolute;
+}
+
+.first .container {
+    left: 0%;
+    top: 40%;
+}
+
+.first figure {
+    right: 0;
+}
+
+.second {
+    background-color: white;
+}
+
+.second .container {
+        right: 0%;
+        top: 40%;
+}
+
+
+.foot {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    height: 450px;
+}
+
+
+
+
+.container1 {
+    width: 20%;
+    margin-top: 5%;
+}
+
+.feedback1 {
+    border-radius: 80%;
+    height: 100px;
+    width: 100px;
+    background-image: url("Images/CORTEZ (3).JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 25%;
+}
+
+.cont {
+    position: absolute;
+    width: 20%;
+}
+
+.cont h1 {
+        margin-left: 10%;
+}
+
+
+
+
+
+.container2 {
+    width: 20%;
+    margin-top: 5%;
+}
+
+.feedback2 {
+    background-image: url("Images/mr bean.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 80%;
+    height: 100px;
+    width: 100px;
+    margin-left: 25%;
+}
+
+.cont1 {
+    position: absolute;
+    width: 20%;
+}
+
+    .cont1 h1 {
+        margin-left: 9%;
+    }
+
+
+
+
+
+.container3 {
+    width: 20%;
+    margin-top: 5%;
+}
+
+.feedback3 {
+    background-image: url("Images/CARDO.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 80%;
+    height: 100px;
+    width: 100px;
+    margin-left: 25%;
+}
+
+.cont2 {
+    position: absolute;
+    width: 20%;
+}
+
+.cont2 h1 {
+   margin-left: 9%;
+}
+
+.foot .title {
+    position: absolute;
+}
