@@ -1,0 +1,72 @@
+﻿.form-group {
+    margin: 15px 0px 15px 0px;
+}
+
+.btn{
+    margin: 5px 0px 5px 0px;
+    border-radius: 25px;
+}
+
+#main-content {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    margin: 50px 0px 50px 0px;
+    padding: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    background-size: 100% 100%;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.head {
+    background-color: #385ce4;
+    border-radius: 5px;
+    margin-top: -40px;
+}
+
+.effect-1 {
+    border: 0;
+    outline: none;
+    width: 100%;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.effect-1 ~ .Focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #00D6AB;
+    transition: 0.4s;
+}
+
+.effect-1:focus ~ .Focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0;
+}
+
+.btn1 {
+    background: #00D6AB;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    height: 35px;
+    width: 125px;
+}
+
+.h3 {
+    background-color: white;
+}
+
