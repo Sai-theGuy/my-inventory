@@ -16,7 +16,8 @@ namespace LifeLine.Models
         public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "Required")]
-        public string Representative { get; set;}
+        [Display(Name = "Contact Person")]
+        public string ContactPerson { get; set;}
 
         [Required(ErrorMessage = "Required")]
         public string Code { get; set; }
@@ -32,11 +33,19 @@ namespace LifeLine.Models
 
         [Required(ErrorMessage = "Required")]
         public SupplierType Type { get; set; }
+        
+        public SupplierStatus Status { get; set; }
     }
 
     public enum SupplierType
     {
         Local = 1,
         International = 2
+    }
+
+    public enum SupplierStatus
+    {
+        Inactive = 0,
+        Active = 1
     }
 }
