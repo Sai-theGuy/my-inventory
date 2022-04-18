@@ -31,7 +31,7 @@ namespace MySuppliers.Controllers
             var item = new Supplier()
             {
                 CompanyName = record.CompanyName,
-                Representative = record.Representative,
+                ContactPerson = record.ContactPerson,
                 Code = record.Code,
                 Address = record.Address,
                 DateAdded = DateTime.Now,
@@ -63,7 +63,7 @@ namespace MySuppliers.Controllers
         {
             var item = _context.Suppliers.Where(i => i.SupplierID == id).SingleOrDefault();
             item.CompanyName = record.CompanyName;
-            item.Representative = record.Representative;
+            item.ContactPerson = record.ContactPerson;
             item.Code = record.Code;
             item.Address = record.Address;
             item.DateModified = DateTime.Now;

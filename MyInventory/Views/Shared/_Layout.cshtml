@@ -14,17 +14,18 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LifeLine</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"> 
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aboutus">About Us </a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -38,9 +39,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - MyInventory - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="navbar navbar-expand-lg navbar-dark bg-primary border-top footer text-muted">
+        <div class="card-body container">
+            <h6><strong>&copy; 2022 Lifeline Medical Center.</strong><a asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a></h6>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

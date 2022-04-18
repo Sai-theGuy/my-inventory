@@ -1,0 +1,32 @@
+﻿.cont {
+    position: relative;
+    height: 100vh;
+}
+
+.center-text {
+    position: absolute;
+    left: 18%;
+    top: 25%;
+}
+
+    .center-text h6 {
+        width: 40%;
+        font-family: Nunito;
+    }
+
+    .center-text h1 {
+        width: 40%;
+        font-family: Nunito;
+    }
+
+.image1 {
+    position: absolute;
+    background-image: url("Images/lifeline medicine pic pt2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20%;
+    height: 40%;
+    width: 40%;
+    top: 10%;
+    left: 50%;
+}
