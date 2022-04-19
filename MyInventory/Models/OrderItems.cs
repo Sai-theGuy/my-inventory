@@ -12,6 +12,8 @@ namespace LifeLine.Models
         [Key]
         public int ListingID { get; set; }
 
+        public int Quantity { get; set; }
+
         public decimal Amount { get; set; }
 
         public int OrderID { get; set; }

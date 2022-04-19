@@ -30,6 +30,20 @@ namespace LifeLine.Controllers
                 ProductList = products
             };
             return View(model);
-        }  
+        }
+        [HttpPost]
+        public IActionResult AddToCart(OrderItems order)
+        {
+            
+
+            var products = _context.ProductListings.ToList();
+
+            var model = new StoreViewModel
+            {
+                ProductList = products
+            };
+
+            return View(model);
+        }
     }
 }
