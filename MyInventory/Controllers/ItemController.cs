@@ -25,9 +25,9 @@ namespace LifeLine.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Item record)
+        public IActionResult Create(OrderItems record)
         {
-            var item = new Item()
+            var item = new OrderItems()
             {
                 Name = record.Name,
                 Code = record.Code,
@@ -58,7 +58,7 @@ namespace LifeLine.Controllers
             return View(item);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, Item record)
+        public IActionResult Edit(int? id, OrderItems record)
         {
             var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
             item.Name = record.Name;
