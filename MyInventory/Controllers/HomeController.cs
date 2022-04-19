@@ -31,6 +31,10 @@ namespace LifeLine.Controllers
         {
             return View();
         }
+        public IActionResult ContactForm()
+        {
+            return View();
+        }
 
         public IActionResult ContactForm()
         {
