@@ -16,7 +16,6 @@ namespace LifeLine.Models
 
         public string ContactPerson { get; set;}
 
-       
         public string Address { get; set; }
 
         public SupplierType Type { get; set; }
