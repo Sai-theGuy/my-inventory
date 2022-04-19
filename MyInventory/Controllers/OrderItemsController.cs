@@ -1,23 +1,22 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 using LifeLine.Data;
 using LifeLine.Models;
 
-namespace MySuppliers.Controllers
+namespace LifeLine.Controllers
 {
-    public class SuppliersController : Controller
+    public class ItemController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public SuppliersController(ApplicationDbContext context)
+        public ItemController(ApplicationDbContext context)
         {
             _context = context;
         }
         public IActionResult Index()
         {
-            var list = _context.Suppliers.ToList();
+            var list = _context.Items.ToList();
             return View(list);
         }
 
@@ -25,18 +24,20 @@ namespace MySuppliers.Controllers
         {
             return View();
         }
-        public IActionResult Create(Suppliers record)
+        [HttpPost]
+        public IActionResult Create(OrderItems record)
         {
-            var item = new Suppliers()
+            var item = new OrderItems()
             {
-                CompanyName = record.CompanyName,
-                ContactPerson = record.ContactPerson,
-                Address = record.Address,
-                Type = record.Type,
-                Active = record.Active
+                Name = record.Name,
+                Code = record.Code,
+                Description = record.Description,
+                Price = record.Price,
+                DateAdded = System.DateTime.Now,
+                Type = record.Type
             };
 
-            _context.Suppliers.Add(item);
+            _context.Items.Add(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -48,7 +49,7 @@ namespace MySuppliers.Controllers
                 return RedirectToAction("Index");
             }
 
-            var item = _context.Suppliers.Where(i => i.SupplierID == id).SingleOrDefault();
+            var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
             if (item == null)
             {
                 return RedirectToAction("Index");
@@ -57,28 +58,29 @@ namespace MySuppliers.Controllers
             return View(item);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, Suppliers record)
+        public IActionResult Edit(int? id, OrderItems record)
         {
-            var item = _context.Suppliers.Where(i => i.SupplierID == id).SingleOrDefault();
-            item.CompanyName = record.CompanyName;
-            item.ContactPerson = record.ContactPerson;
-            item.Address = record.Address;
+            var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
+            item.Name = record.Name;
+            item.Code = record.Code;
+            item.Description = record.Description;
+            item.Price = record.Price;
+            item.DateModified = System.DateTime.Now;
             item.Type = record.Type;
-            item.Active = record.Active;
 
-            _context.Suppliers.Update(item);
+            _context.Items.Update(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int? id)
         {
-            if (id == null)
-            {
+            if(id == null)
+            { 
                 return RedirectToAction("Index");
             }
-            var item = _context.Suppliers.Where(i => i.SupplierID == id).SingleOrDefault();
-            if (item == null)
+            var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
+            if(item == null)
             {
                 return RedirectToAction("Index");
             }
