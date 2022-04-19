@@ -23,7 +23,7 @@
             <p>
                 <a asp-action="Create">Create New</a>
             </p>
-            <table class="table">
+            <table id="records" class="table">
                 <thead>
                     <tr>
                         <th>
@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model) {
+                    @foreach (var item in Model) {
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.CompanyName)
@@ -74,10 +74,20 @@
                 }
                 </tbody>
             </table>
+
+            @sections Scripts
+            {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+            <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#records').DataTable();
+                });
+            </script>
+
+            }
         </div>
     </div>
 </body>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
