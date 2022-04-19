@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+
 
 namespace LifeLine.Controllers
 {
@@ -18,7 +21,7 @@ namespace LifeLine.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult StoreView()
         {
             var products = _context.ProductListings.ToList();
 
