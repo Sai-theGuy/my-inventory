@@ -33,7 +33,7 @@ namespace LifeLine.Controllers
         {
             return View();
         }
-        public IActionResult Contact()
+        public IActionResult ContactForm()
         {
             return View();
         }
@@ -61,7 +61,7 @@ namespace LifeLine.Controllers
             };
             smtp.Send(mail);
             ViewBag.Message = "Inquiry sent.";
-            return View();
+            return RedirectToAction("Index");
         }
        
 
