@@ -3,50 +3,80 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>Suppliers</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
-                <span asp-validation-for="CompanyName" class="text-danger"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/supplier.css" />
+</head>
+<body>
+    <div id="main-content">
+        <div class="card-body">
+            <div clas="row">
+                <div class="col-lg-12">
+                    <div class="head text-center py-3">
+                        <h3 style="color:white">Add Supplier</h3>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="ContactPerson" class="control-label"></label>
-                <input asp-for="ContactPerson" class="form-control" />
-                <span asp-validation-for="ContactPerson" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control"></select>
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Active" class="control-label"></label>
-                <input asp-for="Active" class="form-control" />
-                <span asp-validation-for="Active" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form py-3">
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="CompanyName" class="effect-1" placeholder="Company Name"/>
+                            <span asp-validation-for="CompanyName" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="ContactPerson" class="effect-1" placeholder="Contact Person"/>
+                            <span asp-validation-for="ContactPerson" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <textarea asp-for="Address" class="effect-1" rows="3" placeholder="Address"></textarea>
+                            <span asp-validation-for="Address" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <select asp-for="Type" class="effect-1" asp-items="Html.GetEnumSelectList<SupplierType>()">
+                                <option value="" disabled selected="selected">
+                                    <span style="color: grey;">
+                                        Type of Supplier
+                                    </span>
+                                </option>
+                            </select>
+                            <span asp-validation-for="Type" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <select asp-for="Active" class="effect-1" asp-items="Html.GetEnumSelectList<SupplierStatus>()">
+                                <option value="" disabled selected="selected">
+                                    <span style="color: grey;">
+                                        Type of Supplier
+                                    </span>
+                                </option>
+                            </select>
+                            <span asp-validation-for="Active" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input type="submit" value="Add" class="btn btn-success" />
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="btn btn-primary" asp-area="" asp-controller="Suppliers" asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</body>
+</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
