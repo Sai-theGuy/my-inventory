@@ -20,7 +20,7 @@ namespace LifeLine.Models
 
         public SupplierType Type { get; set; }
         
-        public int Active { get; set; }
+        public SupplierStatus Active { get; set; }
     }
 
     public enum SupplierType
