@@ -9,7 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-
+using System.Collections;
+using Newtonsoft.Json;
 
 namespace LifeLine.Controllers
 {
@@ -32,9 +33,14 @@ namespace LifeLine.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult AddToCart(ProductListings order)
+        public IActionResult AddToCart(String ProductName, String Description, Decimal Price, int Quantity)
         {
-            
+            List<Object> cart = new List<Object>();
+            cart.Add(ProductName);
+            cart.Add(Description);
+            cart.Add(Price);
+            cart.Add(Quantity);
+            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cart));
 
             var products = _context.ProductListings.ToList();
 
