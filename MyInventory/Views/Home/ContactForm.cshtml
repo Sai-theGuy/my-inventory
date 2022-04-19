@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="ContactForm">LifeLine</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="visually-hidden">(current)</span>
@@ -23,7 +23,10 @@
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">About Us </a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aboutus">About Us </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactForm">Contact Form </a>
                 </li>
             </ul>
             <partial name="_LoginPartial" />
