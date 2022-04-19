@@ -3,65 +3,92 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>ProductListings</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
-                <input asp-for="ProductName" class="form-control" />
-                <span asp-validation-for="ProductName" class="text-danger"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/crud.css" />
+</head>
+<body>
+    <div id="main-content">
+        <div class="card-body">
+            <div clas="row">
+                <div class="col-lg-12">
+                    <div class="head text-center py-3">
+                        <h3 style="color:white">Update Supplier</h3>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SupplierID" class="control-label"></label>
-                <input asp-for="SupplierID" class="form-control" />
-                <span asp-validation-for="SupplierID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control"></select>
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StocksLeft" class="control-label"></label>
-                <input asp-for="StocksLeft" class="form-control" />
-                <span asp-validation-for="StocksLeft" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnitMeasurement" class="control-label"></label>
-                <input asp-for="UnitMeasurement" class="form-control" />
-                <span asp-validation-for="UnitMeasurement" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" type="file" accept="image/*"/>
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form py-3">
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="ProductName" class="effect-1" placeholder="Product Name"/>
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="Description" class="effect-1" placeholder="Contact Person"/>
+                            <span asp-validation-for="Description" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="Price" class="effect-1" placeholder="Price"/>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="SupplierID" class="effect-1" placeholder="SupplierID"/>
+                            <span asp-validation-for="SupplierID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <select asp-for="Type" class="effect-1" asp-items="Html.GetEnumSelectList<ItemType>()">
+                               <option value="" disabled selected="selected">
+                                    <span style="color: grey;">
+                                        Type of Product
+                                    </span>
+                                </option>
+                            </select>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="StocksLeft" class="effect-1" placeholder="Stocks Left"/>
+                            <span asp-validation-for="StocksLeft" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="UnitMeasurement" class="effect-1" placeholder="Unit Measurement"/>
+                            <span asp-validation-for="StocksLeft" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input asp-for="ImagePath" class="form-control" type="file" accept="image/*"/>
+                            <span asp-validation-for="ImagePath" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
+                            <input type="submit" value="Create" class="btn btn-success" />
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="btn btn-primary" asp-area="" asp-controller="ProductListings" asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</body>
+</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

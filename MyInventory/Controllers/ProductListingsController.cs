@@ -38,12 +38,12 @@ namespace LifeLine.Controllers
                 UnitMeasurement = record.UnitMeasurement
             };
 
-            if(ImagePath != null) 
+            if(ImagePath != null)
             {
                 if(ImagePath.Length > 0)
                 {
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot/images/products", ImagePath.FileName);
+                        "wwwroot/img/products", ImagePath.FileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
@@ -74,7 +74,7 @@ namespace LifeLine.Controllers
             return View(item);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, ProductListings record)
+        public IActionResult Edit(int? id, ProductListings record, IFormFile ImagePath)
         {
             var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
             product.ProductName = record.ProductName;
@@ -84,6 +84,21 @@ namespace LifeLine.Controllers
             product.Type = record.Type;
             product.StocksLeft = record.StocksLeft;
             product.UnitMeasurement = record.UnitMeasurement;
+
+            if (ImagePath != null)
+            {
+                if (ImagePath.Length > 0)
+                {
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot/img/products", ImagePath.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        ImagePath.CopyTo(stream);
+                    }
+                    product.ImagePath = ImagePath.FileName;
+                }
+            }
 
             _context.ProductListings.Update(product);
             _context.SaveChanges();
