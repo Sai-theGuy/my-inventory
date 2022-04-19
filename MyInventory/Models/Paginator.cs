@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Class1
+namespace Paginator
+
 {
     public class Class1
     {
-        public Pager(
+        public Class1(
             int totalItems,
             int currentPage = 1,
             int pageSize = 6,
