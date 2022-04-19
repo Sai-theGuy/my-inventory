@@ -7,10 +7,10 @@ using LifeLine.Models;
 
 namespace LifeLine.Controllers
 {
-    public class ItemController : Controller
+    public class ProductListingsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public ItemController(ApplicationDbContext context)
+        public ProductListingsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -25,19 +25,19 @@ namespace LifeLine.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(OrderItems record)
+        public IActionResult Create(ProductListings record)
         {
-            var item = new OrderItems()
+            var item = new ProductListings()
             {
-                Name = record.Name,
-                Code = record.Code,
+                ProductName = record.ProductName,
                 Description = record.Description,
                 Price = record.Price,
-                DateAdded = System.DateTime.Now,
+                SupplierID = record.SupplierID,
+
                 Type = record.Type
             };
 
-            _context.Items.Add(item);
+            _context.ProductListings.Add(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -49,7 +49,7 @@ namespace LifeLine.Controllers
                 return RedirectToAction("Index");
             }
 
-            var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
+            var item = _context.Items.Where(i => i.ListingID == id).SingleOrDefault();
             if (item == null)
             {
                 return RedirectToAction("Index");
@@ -60,7 +60,7 @@ namespace LifeLine.Controllers
         [HttpPost]
         public IActionResult Edit(int? id, OrderItems record)
         {
-            var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
+            var item = _context.Items.Where(i => i.ListingID == id).SingleOrDefault();
             item.Name = record.Name;
             item.Code = record.Code;
             item.Description = record.Description;
@@ -79,7 +79,7 @@ namespace LifeLine.Controllers
             { 
                 return RedirectToAction("Index");
             }
-            var item = _context.Items.Where(i => i.ItemID == id).SingleOrDefault();
+            var item = _context.Items.Where(i => i.ListingID == id).SingleOrDefault();
             if(item == null)
             {
                 return RedirectToAction("Index");

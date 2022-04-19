@@ -8,25 +8,33 @@ using System.ComponentModel.DataAnnotations;
 namespace LifeLine.Models
 {
     public class ProductListings
-
     {
         [Key]
         public int ListingID { get; set; }
 
         [Required]
-        public string ProductName { get; set; } 
+        public string ProductName { get; set; }
 
+        [Required]
         public string Description { get; set; }
-    
-        public decimal Price { get; set; }    
 
+        [Required]
+        public decimal Price { get; set; }
+
+        [Required]
         public int SupplierID { get; set; }
 
+        [Required]
         public ItemType Type { get; set; }
 
+        [Required]
         public int StocksLeft { get; set; }
 
+        [Required]
         public string UnitMeasurement { get; set; }
+
+        [Required]
+        public string ImagePath { get; set; }
     }
 
     public enum ItemType
@@ -41,6 +49,5 @@ namespace LifeLine.Models
         Injections = 8,
         Implants = 9,
         Buccal = 10
-
     }
 }
