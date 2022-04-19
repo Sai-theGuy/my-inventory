@@ -1,0 +1,50 @@
+﻿@model IEnumerable<LifeLine.Models.PurchaseOrders>
+
+@{
+    Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.css" />
+    <link rel="stylesheet" href="~/css/register.css" />
+</head>
+<body>
+    <div id="invoice">
+
+        <center id="top">
+            <div class="logo"></div>
+            <div class="info">
+                <h1>Payment Complete</h1>
+            </div>
+        </center>
+        <div id="mid">
+            <div class="info">
+                <p>
+                    Thank you! Your payment has been sucessful.
+                </p>
+            </div>
+        </div>
+
+        <div id="bot">
+
+
+            <div id="table">
+                <table>
+                    <tr class="tabletitle">
+                        <th>
+                         
+                        </th>
+                        <td class="totalprice"><h2>Total Price:</h2></td>
+                    </tr>
+                    <tr class="output">
+                        <td class="tableitem"><p class="idoutput"></p></td>
+                        <td class="tableitem"><p class="priceoutput"></p></td>
+                    </tr>
+                </table>
+            </div>
+            <button type="submit" id="btn1" class="btn1">Back to Homepage</button>
+        </div>
+    </div>
+</body>
