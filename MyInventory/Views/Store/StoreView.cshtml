@@ -1,20 +1,38 @@
 ﻿@model LifeLine.Models.StoreViewModel
-    
+
 @inject LifeLine.Data.ApplicationDbContext _context;
 
-@{
-    ViewData["Title"] = "Index";
-}
-<div class="col-9">
-    <h2 class="text-center">All Products</h2>
-    <div class="row"></div>
-    @foreach (var item in Model.ProductList)
-            {
-                <div class="col-4">
-                    <div class="card">
-                       
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.css" />
+    
+</head>
+<body>
+    <div class="col-xl-9">
+        <h2 class="text-center">All Products</h2>
+        <div class="flex-column"></div>
+        @foreach (var item in Model.ProductList)
+        {
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="card-deck">
+                    <div class="card h-100">
+                        <img src="~/img/products/@(item.ImagePath)" class="card-img-top" alt="@(item.ProductName)"/>
+                        <div class="card-body">
+                            <h5 class="card-title">@(item.ProductName)</h5>
+                            <p class="card-text">@(item.Description)</p>
+                            <small>PHP @(item.Price)</small>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-            }
-</div>
+        }
+    </div>
+
+</body>
+</html>
+
