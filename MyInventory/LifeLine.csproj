@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Item\**" />
+    <Compile Remove="wwwroot\img\**" />
+    <Content Remove="Views\Item\**" />
+    <Content Remove="wwwroot\img\**" />
+    <EmbeddedResource Remove="Views\Item\**" />
+    <EmbeddedResource Remove="wwwroot\img\**" />
+    <None Remove="Views\Item\**" />
+    <None Remove="wwwroot\img\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\.editorconfig" />
   </ItemGroup>
 
@@ -32,6 +43,10 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\img\products\" />
   </ItemGroup>
 
 </Project>

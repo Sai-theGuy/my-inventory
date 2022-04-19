@@ -16,18 +16,23 @@ namespace LifeLine.Models
 
         public string ContactPerson { get; set;}
 
-       
         public string Address { get; set; }
 
         public SupplierType Type { get; set; }
         
-        public int Active { get; set; }
+        public SupplierStatus Active { get; set; }
     }
 
     public enum SupplierType
     {
         Local = 1,
         International = 2
+    }
+
+    public enum SupplierStatus
+    {
+        Active = 1,
+        Inactive = 2
     }
 
 

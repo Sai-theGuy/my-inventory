@@ -1,4 +1,4 @@
-﻿@model LifeLine.Models.Supplier
+﻿@model LifeLine.Models.Suppliers
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="~/css/supplier.css" />
+    <link rel="stylesheet" href="~/css/crud.css" />
 </head>
 <body>
     <div id="main-content">
@@ -35,12 +35,6 @@
                     </div>
                     <div class="form-row pb-4">
                         <div class="col-lg-12">
-                            <input asp-for="Code" class="effect-1" placeholder="Code"/>
-                            <span asp-validation-for="Code" class="Focus-border"></span>
-                        </div>
-                    </div>
-                    <div class="form-row pb-4">
-                        <div class="col-lg-12">
                             <textarea asp-for="Address" class="effect-1" rows="3" placeholder="Address"></textarea>
                             <span asp-validation-for="Address" class="Focus-border"></span>
                         </div>
@@ -59,10 +53,22 @@
                     </div>
                     <div class="form-row pb-4">
                         <div class="col-lg-12">
+                            <select asp-for="Active" class="effect-1" asp-items="Html.GetEnumSelectList<SupplierStatus>()">
+                                <option value="" disabled selected="selected">
+                                    <span style="color: grey;">
+                                        Supplier Status
+                                    </span>
+                                </option>
+                            </select>
+                            <span asp-validation-for="Active" class="Focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-row pb-4">
+                        <div class="col-lg-12">
                             <input type="submit" value="Add" class="btn btn-success" />
                         </div>
                         <div class="col-lg-4">
-                            <a class="btn btn-primary" asp-area="" asp-controller="Supplier" asp-action="Index">Back to List</a>
+                            <a class="btn btn-primary" asp-area="" asp-controller="Suppliers" asp-action="Index">Back to List</a>
                         </div>
                     </div>
                 </div>

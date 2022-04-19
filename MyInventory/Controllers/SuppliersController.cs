@@ -8,10 +8,10 @@ using LifeLine.Models;
 
 namespace MySuppliers.Controllers
 {
-    public class SupplierController : Controller
+    public class SuppliersController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public SupplierController(ApplicationDbContext context)
+        public SuppliersController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -25,17 +25,15 @@ namespace MySuppliers.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Create(Supplier record)
+        public IActionResult Create(Suppliers record)
         {
-            var item = new Supplier()
+            var item = new Suppliers()
             {
                 CompanyName = record.CompanyName,
                 ContactPerson = record.ContactPerson,
-                Code = record.Code,
                 Address = record.Address,
-                DateAdded = DateTime.Now,
-                Type = record.Type
+                Type = record.Type,
+                Active = record.Active
             };
 
             _context.Suppliers.Add(item);
@@ -59,15 +57,14 @@ namespace MySuppliers.Controllers
             return View(item);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, Supplier record)
+        public IActionResult Edit(int? id, Suppliers record)
         {
             var item = _context.Suppliers.Where(i => i.SupplierID == id).SingleOrDefault();
             item.CompanyName = record.CompanyName;
             item.ContactPerson = record.ContactPerson;
-            item.Code = record.Code;
             item.Address = record.Address;
-            item.DateModified = DateTime.Now;
             item.Type = record.Type;
+            item.Active = record.Active;
 
             _context.Suppliers.Update(item);
             _context.SaveChanges();

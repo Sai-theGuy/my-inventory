@@ -1,0 +1,65 @@
+﻿@model LifeLine.Models.StoreViewModel
+
+@inject LifeLine.Data.ApplicationDbContext _context;
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/crud.css" />
+</head>
+<body>
+    <div id="main-content">
+        <div class="card-body">
+            <div clas="row">
+                <div class="col-lg-12">
+                    <div class="head text-center py-3">
+                        <h3 style="color:white">All Products</h3>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="flex-column">
+            <div class="row row-cols-1 row-cols-md-3">
+            @foreach (var item in Model.ProductList)
+            {
+                    <div class="card-deck" style="padding-top:2.5%;">
+                        <div class="card h-100">
+                            <img src="~/img/products/@(item.ImagePath)" class="card-img-top" alt="@(item.ProductName)"/>
+                            <div class="card-body">
+                                <h5 class="card-title">@(item.ProductName)</h5>
+                                <p class="card-text">@(item.Description)</p>
+                                <small>PHP @(item.Price)</small>
+                                <br />
+                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+            }
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+</head>
+<body>
+    <div class="col-xl-9">
+        <h2 class="text-center"></h2>
+        
+    </div>
+
+</body>
+</html>
+
