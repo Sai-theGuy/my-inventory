@@ -20,6 +20,6 @@ namespace LifeLine.Data
 
         public DbSet<OrderItems> Items { get; set; }
 
-        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Suppliers> Suppliers { get; set; }
     }
 }
