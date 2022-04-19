@@ -32,7 +32,7 @@ namespace LifeLine.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult AddToCart(OrderItems order)
+        public IActionResult AddToCart(ProductListings order)
         {
             
 
