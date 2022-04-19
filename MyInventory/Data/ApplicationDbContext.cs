@@ -19,7 +19,6 @@ namespace LifeLine.Data
         }
 
         public DbSet<ProductListings> ProductListings { get; set; }
-
         public DbSet<Suppliers> Suppliers { get; set; }
     }
 }

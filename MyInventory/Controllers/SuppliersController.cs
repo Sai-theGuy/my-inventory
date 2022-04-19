@@ -8,10 +8,10 @@ using LifeLine.Models;
 
 namespace MySuppliers.Controllers
 {
-    public class SupplierController : Controller
+    public class SuppliersController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public SupplierController(ApplicationDbContext context)
+        public SuppliersController(ApplicationDbContext context)
         {
             _context = context;
         }

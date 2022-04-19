@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-using LifeLine.Data;
+﻿using LifeLine.Data;
 using LifeLine.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Linq;
 
 namespace LifeLine.Controllers
 {
@@ -16,28 +16,44 @@ namespace LifeLine.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.Items.ToList();
+            var list = _context.ProductListings.ToList();
             return View(list);
         }
-
         public IActionResult Create()
         {
             return View();
         }
+        
         [HttpPost]
-        public IActionResult Create(ProductListings record)
+        public IActionResult Create(ProductListings record, IFormFile ImagePath)
         {
-            var item = new ProductListings()
+            var product = new ProductListings()
             {
                 ProductName = record.ProductName,
                 Description = record.Description,
                 Price = record.Price,
                 SupplierID = record.SupplierID,
-
-                Type = record.Type
+                Type = record.Type,
+                StocksLeft = record.StocksLeft,
+                UnitMeasurement = record.UnitMeasurement
             };
 
-            _context.ProductListings.Add(item);
+            if(ImagePath != null) 
+            {
+                if(ImagePath.Length > 0)
+                {
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                        "wwwroot/images/products", ImagePath.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        ImagePath.CopyTo(stream);
+                    }
+                    product.ImagePath = ImagePath.FileName;
+                }
+            }
+
+            _context.ProductListings.Add(product);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -49,7 +65,7 @@ namespace LifeLine.Controllers
                 return RedirectToAction("Index");
             }
 
-            var item = _context.Items.Where(i => i.ListingID == id).SingleOrDefault();
+            var item = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
             if (item == null)
             {
                 return RedirectToAction("Index");
@@ -58,17 +74,18 @@ namespace LifeLine.Controllers
             return View(item);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, OrderItems record)
+        public IActionResult Edit(int? id, ProductListings record)
         {
-            var item = _context.Items.Where(i => i.ListingID == id).SingleOrDefault();
-            item.Name = record.Name;
-            item.Code = record.Code;
-            item.Description = record.Description;
-            item.Price = record.Price;
-            item.DateModified = System.DateTime.Now;
-            item.Type = record.Type;
+            var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
+            product.ProductName = record.ProductName;
+            product.Description = record.Description;
+            product.SupplierID = record.SupplierID;
+            product.Price = record.Price;
+            product.Type = record.Type;
+            product.StocksLeft = record.StocksLeft;
+            product.UnitMeasurement = record.UnitMeasurement;
 
-            _context.Items.Update(item);
+            _context.ProductListings.Update(product);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -79,13 +96,13 @@ namespace LifeLine.Controllers
             { 
                 return RedirectToAction("Index");
             }
-            var item = _context.Items.Where(i => i.ListingID == id).SingleOrDefault();
-            if(item == null)
+            var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
+            if(product == null)
             {
                 return RedirectToAction("Index");
             }
 
-            _context.Remove(item);
+            _context.Remove(product);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
