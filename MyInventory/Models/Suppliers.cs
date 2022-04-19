@@ -29,5 +29,11 @@ namespace LifeLine.Models
         International = 2
     }
 
+    public enum SupplierStatus
+    {
+        Active = 1,
+        Inactive = 2
+    }
+
 
 }
