@@ -89,21 +89,17 @@
                 </tbody>
             </table>
 
-            @sections Scripts
+            @section Scripts
             {
-            <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
-            <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('#records').DataTable();
-                });
-            </script>
-
+                <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+                <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#records').DataTable();
+                    });
+                </script>
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
             }
         </div>
     </div>
 </body>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
