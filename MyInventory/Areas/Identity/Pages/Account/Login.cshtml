@@ -1,17 +1,12 @@
 ﻿@page
 @model LoginModel
-
 @{
     ViewData["Title"] = "Log in";
 }
-
-
 <head>
-
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/login.css" />
-
 </head>
 
 <div class="wrapper fadeInDown">
@@ -24,8 +19,8 @@
 
         <!-- Login Form -->
         <form id="account" method="post">
-            <input type="text" asp-for="Input.Email" class="fadeIn second" placeholder="login"/>
-            <input type="password" asp-for="Input.Password" class="fadeIn third" placeholder="password"/>
+            <input type="text" asp-for="Input.Email" class="fadeIn second" placeholder="Email" />
+            <input type="password" asp-for="Input.Password" class="fadeIn third" placeholder="password" />
             <label asp-for="Input.RememberMe">
                 <input asp-for="Input.RememberMe" />
                 @Html.DisplayNameFor(m => m.Input.RememberMe)
