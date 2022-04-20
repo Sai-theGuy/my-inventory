@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<LifeLine.Models.Suppliers>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Suppliers";
 }
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
@@ -23,7 +22,7 @@
             <p>
                 <a asp-action="Create">Create New</a>
             </p>
-            <table class="table">
+            <table id="records" class="table">
                 <thead>
                     <tr>
                         <th>
@@ -41,11 +40,11 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Active)
                         </th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model) {
+                    @foreach (var item in Model) {
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.CompanyName)
@@ -74,10 +73,20 @@
                 }
                 </tbody>
             </table>
+
+            @section Scripts
+            {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+            <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#records').DataTable();
+                });
+            </script>
+
+            }
         </div>
     </div>
 </body>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

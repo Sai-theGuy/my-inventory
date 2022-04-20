@@ -16,112 +16,153 @@ namespace LifeLine.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.ProductListings.ToList();
-            return View(list);
+            if (User.Identity.IsAuthenticated)
+            {
+                var list = _context.ProductListings.ToList();
+                return View(list);
+            }
+            else
+            {
+                return LocalRedirect(Url.Content("/Identity/Account/Login"));
+            }
         }
         public IActionResult Create()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return LocalRedirect(Url.Content("/Identity/Account/Login"));
+            }
         }
         
         [HttpPost]
         public IActionResult Create(ProductListings record, IFormFile ImagePath)
         {
-            var product = new ProductListings()
+            if (User.Identity.IsAuthenticated)
             {
-                ProductName = record.ProductName,
-                Description = record.Description,
-                Price = record.Price,
-                SupplierID = record.SupplierID,
-                Type = record.Type,
-                StocksLeft = record.StocksLeft,
-                UnitMeasurement = record.UnitMeasurement
-            };
-
-            if(ImagePath != null)
-            {
-                if(ImagePath.Length > 0)
+                var product = new ProductListings()
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot/img/products", ImagePath.FileName);
+                    ProductName = record.ProductName,
+                    Description = record.Description,
+                    Price = record.Price,
+                    SupplierID = record.SupplierID,
+                    Type = record.Type,
+                    StocksLeft = record.StocksLeft,
+                    UnitMeasurement = record.UnitMeasurement
+                };
 
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                if(ImagePath != null)
+                {
+                    if(ImagePath.Length > 0)
                     {
-                        ImagePath.CopyTo(stream);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/img/products", ImagePath.FileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            ImagePath.CopyTo(stream);
+                        }
+                        product.ImagePath = ImagePath.FileName;
                     }
-                    product.ImagePath = ImagePath.FileName;
                 }
+
+                _context.ProductListings.Add(product);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-
-            _context.ProductListings.Add(product);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
+            else
+            {
+                return LocalRedirect(Url.Content("/Identity/Account/Login"));
+            }
+}
         public IActionResult Edit(int? id)
         {
-            if (id == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index");
-            }
+                if (id == null)
+                {
+                    return RedirectToAction("Index");
+                }
 
-            var item = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
-            if (item == null)
+                var item = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
+                if (item == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return View(item);
+            }
+            else
             {
-                return RedirectToAction("Index");
+                return LocalRedirect(Url.Content("/Identity/Account/Login"));
             }
-
-            return View(item);
         }
         [HttpPost]
         public IActionResult Edit(int? id, ProductListings record, IFormFile ImagePath)
         {
-            var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
-            product.ProductName = record.ProductName;
-            product.Description = record.Description;
-            product.SupplierID = record.SupplierID;
-            product.Price = record.Price;
-            product.Type = record.Type;
-            product.StocksLeft = record.StocksLeft;
-            product.UnitMeasurement = record.UnitMeasurement;
-
-            if (ImagePath != null)
+            if (User.Identity.IsAuthenticated)
             {
-                if (ImagePath.Length > 0)
+                var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
+                product.ProductName = record.ProductName;
+                product.Description = record.Description;
+                product.SupplierID = record.SupplierID;
+                product.Price = record.Price;
+                product.Type = record.Type;
+                product.StocksLeft = record.StocksLeft;
+                product.UnitMeasurement = record.UnitMeasurement;
+
+                if (ImagePath != null)
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot/img/products", ImagePath.FileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    if (ImagePath.Length > 0)
                     {
-                        ImagePath.CopyTo(stream);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/img/products", ImagePath.FileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            ImagePath.CopyTo(stream);
+                        }
+                        product.ImagePath = ImagePath.FileName;
                     }
-                    product.ImagePath = ImagePath.FileName;
                 }
+
+                _context.ProductListings.Update(product);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-
-            _context.ProductListings.Update(product);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
+            else
+            {
+                return LocalRedirect(Url.Content("/Identity/Account/Login"));
+            }
+}
         public IActionResult Delete(int? id)
         {
-            if(id == null)
-            { 
-                return RedirectToAction("Index");
-            }
-            var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
-            if(product == null)
+            if (User.Identity.IsAuthenticated)
             {
+                if (id == null)
+                { 
+                    return RedirectToAction("Index");
+                }
+                var product = _context.ProductListings.Where(i => i.ListingID == id).SingleOrDefault();
+                if(product == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                _context.Remove(product);
+                _context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-
-            _context.Remove(product);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
-
+            else
+            {
+                return LocalRedirect(Url.Content("/Identity/Account/Login"));
+            }
         }
     }
 }

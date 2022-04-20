@@ -5,11 +5,10 @@
 }
 
 <head>
-   
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/register.css" />
-
+    <link rel="stylesheet" href="~/css/login.css" />
 </head>
 
 <div class="wrapper fadeInDown">
@@ -22,9 +21,11 @@
 
         <!-- Login Form -->
         <form id="account" method="post">
-            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-            <input type="text" id="conpassword" class="fadeIn confirm" name="conpass" placeholder="confirm password">
+            <input asp-for="Input.FN" type="text" class="fadeIn second" placeholder="FirstName">
+            <input asp-for="Input.LN" type="text" class="fadeIn second" placeholder="LastName">
+            <input asp-for="Input.Email" type="text" class="fadeIn second" placeholder="Email">
+            <input type="password" asp-for="Input.Password" class="fadeIn third" placeholder="password"/>
+            <input type="password" asp-for="Input.ConfirmPassword" class="fadeIn third" placeholder="password"/>
             <input type="submit" class="fadeIn fourth" value="Register">
         </form>
 

@@ -32,6 +32,7 @@ namespace LifeLine
 
             services.AddDefaultIdentity<ApplicationUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -56,6 +57,8 @@ namespace LifeLine
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
