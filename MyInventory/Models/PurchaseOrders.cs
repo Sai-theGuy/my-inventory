@@ -12,8 +12,13 @@ namespace LifeLine.Models
         [Key]
         public int OrderID { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
-    }
 
-    
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public DateTime DateCreate { get; set; }
+    }
 }

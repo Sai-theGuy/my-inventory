@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeLine.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220419084227_CreateLifeLine")]
-    partial class CreateLifeLine
+    [Migration("20220420105145_LifeLineMedical")]
+    partial class LifeLineMedical
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,6 +130,28 @@ namespace LifeLine.Migrations
                     b.HasKey("ListingID");
 
                     b.ToTable("ProductListings");
+                });
+
+            modelBuilder.Entity("LifeLine.Models.PurchaseOrders", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("OrderID");
+
+                    b.ToTable("PurchaseOrders");
                 });
 
             modelBuilder.Entity("LifeLine.Models.Suppliers", b =>

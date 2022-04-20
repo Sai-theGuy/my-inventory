@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LifeLine.Migrations
 {
-    public partial class CreateLifeLine : Migration
+    public partial class LifeLineMedical : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,6 +66,21 @@ namespace LifeLine.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProductListings", x => x.ListingID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PurchaseOrders",
+                columns: table => new
+                {
+                    OrderID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateCreate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PurchaseOrders", x => x.OrderID);
                 });
 
             migrationBuilder.CreateTable(
@@ -250,6 +265,9 @@ namespace LifeLine.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductListings");
+
+            migrationBuilder.DropTable(
+                name: "PurchaseOrders");
 
             migrationBuilder.DropTable(
                 name: "Suppliers");
