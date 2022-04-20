@@ -1,0 +1,72 @@
+﻿#invoice {
+    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    padding: 2mm;
+    margin: 0 auto;
+    width: 120mm;
+    background: #FFF;
+}
+
+::selection {
+    background: #f31544;
+    color: #FFF;
+}
+
+::-moz-selection {
+    background: #f31544;
+    color: #FFF;
+}
+
+h1 {
+    color: #222;
+}
+
+p {
+    color: #222;
+}
+
+.info {
+    text-align: center;
+}
+
+#top, #mid, #bot {
+    border-bottom: 1px solid #EEE;
+}
+
+#top {
+    min-height: 100px;
+}
+
+#mid {
+    min-height: 80px;
+}
+
+#bot {
+    min-height: 50px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#top .logo {
+    height: 100px;
+    width: 100px;
+    background: url(/css/images/checkmark.png) no-repeat;
+    background-size: 100px 100px;
+    border-radius: 50px;
+}
+
+.btn1 {
+    background: #385ce4;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    width: 150px;
+    margin-left: 30%;
+    line-height: 5px;
+    font-size: 15px;
+    text-align: center;
+}
