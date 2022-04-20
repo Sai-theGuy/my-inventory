@@ -25,7 +25,7 @@ namespace LifeLine.Controllers
         public IActionResult Receipt()
         {
             var order = _context.PurchaseOrders.ToList();
-            return View()
+            return View();
         }
     }
 }
