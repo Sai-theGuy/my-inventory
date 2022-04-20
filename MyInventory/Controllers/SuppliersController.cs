@@ -25,6 +25,7 @@ namespace MySuppliers.Controllers
         {
             return View();
         }
+        [HttpPost]
         public IActionResult Create(Suppliers record)
         {
             var item = new Suppliers()

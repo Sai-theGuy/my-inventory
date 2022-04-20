@@ -33,14 +33,18 @@ namespace LifeLine.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult AddToCart(String ProductName, String Description, Decimal Price, int Quantity)
+        public IActionResult AddToCart(string id)
         {
-            List<Object> cart = new List<Object>();
-            cart.Add(ProductName);
-            cart.Add(Description);
-            cart.Add(Price);
-            cart.Add(Quantity);
-            HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cart));
+            //List<Object> cart = new List<Object>();
+            //foreach (var product in order.ProductList)
+            //{StoreViewModel order
+            //    cart.Add(product.ListingID);
+            //    cart.Add(product.ProductName);
+            //    cart.Add(product.Price);
+            //    cart.Add("placeholder");
+            //}
+
+            //HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(cart));
 
             var products = _context.ProductListings.ToList();
 
@@ -50,6 +54,8 @@ namespace LifeLine.Controllers
             };
 
             return View(model);
+              
+            
         }
     }
 }
