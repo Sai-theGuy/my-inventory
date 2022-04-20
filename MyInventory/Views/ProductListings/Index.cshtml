@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<LifeLine.Models.ProductListings>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product Listings";
 }
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
@@ -15,7 +14,7 @@
             <div clas="row">
                 <div class="col-lg-12">
                     <div class="head text-center py-3">
-                        <h3 style="color:white">Suppliers</h3>
+                        <h3 style="color:white">Product Listing</h3>
                     </div>
                 </div>
             </div>
@@ -23,7 +22,7 @@
             <p>
                 <a asp-action="Create">Create New</a>
             </p>
-            <table class="table">
+            <table id="records" class="table">
                 <thead>
                     <tr>
                         <th>
@@ -50,11 +49,11 @@
                         <th>
                             @Html.DisplayNameFor(model => model.ImagePath)
                         </th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model) {
+                    @foreach (var item in Model) {
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.ProductName)
@@ -88,10 +87,18 @@
                 }
                 </tbody>
             </table>
+
+            @section Scripts
+            {
+                <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+                <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#records').DataTable();
+                    });
+                </script>
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
         </div>
     </div>
 </body>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

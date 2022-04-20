@@ -1,8 +1,8 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 *@
 @{
+    ViewData["Title"] = "About Us";
     Layout = null;
 }
 
@@ -24,22 +24,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="visually-hidden">(current)</span>
                 </button>
-
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactForm">Contact Form</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Store" asp-action="StoreView">View Products</a>
-                        </li>
-                    </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
