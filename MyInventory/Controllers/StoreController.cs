@@ -41,6 +41,12 @@ namespace LifeLine.Controllers
             return View(products);
         }
 
+        public IActionResult ShowCart()
+        {
+            var cort = _context.ShoppingCart.ToList();
+            return View(cort);
+        }
+
         [HttpPost]
         public IActionResult AddToCart(int? id, int? quantity)
         {
@@ -60,24 +66,22 @@ namespace LifeLine.Controllers
             var shoppingCart = _context.ShoppingCart
                 .Where(d => d.ListingID == id).SingleOrDefault();
 
-            if(shoppingCart != null)
+            if(shoppingCart == null)
             {
                 var record = new ShoppingCart
                 {
                     ListingID = products.ListingID,
                     ProductName = products.ProductName,
                     Quantity = quantity == null ? 1 : (int)quantity,
-                    Price = products.Price,
+                    Price = products.Price * (int)quantity,
                 };
-
+                
                 _context.ShoppingCart.Add(record);
             }
             else
             {
-                shoppingCart.Quantity = shoppingCart.Quantity + quantity == null ? 1 :
-                    (int)quantity;
-                shoppingCart.Price = shoppingCart.Price + quantity == null ? products.Price :
-                    (int)quantity * products.Price;
+                shoppingCart.Quantity += (int)quantity;
+                shoppingCart.Price += (int)quantity * products.Price;
             }
             _context.SaveChanges();
 
@@ -88,9 +92,59 @@ namespace LifeLine.Controllers
                 ProductList = list
             };
 
-            return View(model);
+            return RedirectToActionPermanent("StoreView");
         }
 
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("ShowCart");
+            }
+            var item = _context.ShoppingCart.Where(i => i.ShoppingCartID == id).SingleOrDefault();
+            if (item == null)
+            {
+                return RedirectToAction("ShowCart");
+            }
 
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int? id, ShoppingCart record)
+        {
+            var item = _context.ShoppingCart.Where(i => i.ShoppingCartID == id).SingleOrDefault();
+            decimal price = item.Price/item.Quantity;
+            item.Quantity = record.Quantity;
+            item.Price = record.Quantity * price;
+
+            _context.ShoppingCart.Update(item);
+            _context.SaveChanges();
+
+            return RedirectToAction("ShowCart");
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("ShowCart");
+            }
+            var item = _context.ShoppingCart.Where(i => i.ShoppingCartID == id).SingleOrDefault();
+            if (item == null)
+            {
+                return RedirectToAction("ShowCart");
+            }
+
+            _context.Remove(item);
+            _context.SaveChanges();
+
+            return RedirectToAction("ShowCart");
+        }
+
+        public IActionResult Order()
+        {
+
+            return View();
+        }
     }
 }
