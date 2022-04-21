@@ -100,15 +100,16 @@ namespace LifeLine.Migrations
                 name: "ShoppingCart",
                 columns: table => new
                 {
-                    ListingID = table.Column<int>(type: "int", nullable: false)
+                    ShoppingCartID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ListingID = table.Column<int>(type: "int", nullable: false),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShoppingCart", x => x.ListingID);
+                    table.PrimaryKey("PK_ShoppingCart", x => x.ShoppingCartID);
                 });
 
             migrationBuilder.CreateTable(
