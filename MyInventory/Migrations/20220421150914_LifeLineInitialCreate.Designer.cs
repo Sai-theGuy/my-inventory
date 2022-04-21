@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeLine.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220419084227_CreateLifeLine")]
-    partial class CreateLifeLine
+    [Migration("20220421150914_LifeLineInitialCreate")]
+    partial class LifeLineInitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,6 +92,27 @@ namespace LifeLine.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("LifeLine.Models.OrderItems", b =>
+                {
+                    b.Property<int>("ListingID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("ListingID");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("LifeLine.Models.ProductListings", b =>
                 {
                     b.Property<int>("ListingID")
@@ -132,6 +153,43 @@ namespace LifeLine.Migrations
                     b.ToTable("ProductListings");
                 });
 
+            modelBuilder.Entity("LifeLine.Models.PurchaseOrders", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("OrderID");
+
+                    b.ToTable("PurchaseOrders");
+                });
+
+            modelBuilder.Entity("LifeLine.Models.ShoppingCart", b =>
+                {
+                    b.Property<int>("ListingID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListingID");
+
+                    b.ToTable("ShoppingCart");
+                });
+
             modelBuilder.Entity("LifeLine.Models.Suppliers", b =>
                 {
                     b.Property<int>("SupplierID")
@@ -143,12 +201,15 @@ namespace LifeLine.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactPerson")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type")

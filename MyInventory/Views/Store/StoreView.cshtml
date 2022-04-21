@@ -55,8 +55,9 @@
                             <p class="card-text">@(item.Description)</p>
                             <small>PHP @(item.Price)</small>
                             <br />
-                            <a class="btn btn-primary" asp-controller="Store" asp-action="AddToCart" 
-                                asp-route-id="@(item.ListingID)">Buy Now</a>
+                            <a href="@(Url.Action("Detail", "Store", new {id = item.ListingID}))" class="btn btn-primary">
+                                View details
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -12,8 +12,7 @@ namespace LifeLine.Models
         [Key]
         public int OrderID { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
     }
-
-    
 }

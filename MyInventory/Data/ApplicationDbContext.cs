@@ -20,7 +20,8 @@ namespace LifeLine.Data
 
         public DbSet<ProductListings> ProductListings { get; set; }
         public DbSet<Suppliers> Suppliers { get; set; }
-
         public DbSet<PurchaseOrders> PurchaseOrders { get; set; }
+        public DbSet<OrderItems> OrderItems { get; set; }
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
     }
 }

@@ -4,15 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LifeLine.Models
 {
     public class ProductListings
     {
-        [Key]
+        [Key, Display(Name = "Listing ID")]
         public int ListingID { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Product Name")]
         public string ProductName { get; set; }
 
         [Required]
@@ -21,20 +22,27 @@ namespace LifeLine.Models
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
+        // must fix retreiving supplierID from suppliers then display to view
+        //[Required, Display(Name = "Supplier ID"), ForeignKey("Suppliers,Supplier ID")]
+        [Required, Display(Name = "Supplier ID")]
         public int SupplierID { get; set; }
 
         [Required]
         public ItemType Type { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Stocks Left")]
         public int StocksLeft { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Measurement Unit")]
         public string UnitMeasurement { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Image Path")]
         public string ImagePath { get; set; }
+
+        public static implicit operator List<object>(ProductListings v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public enum ItemType
