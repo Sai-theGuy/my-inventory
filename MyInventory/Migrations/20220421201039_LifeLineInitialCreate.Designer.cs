@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LifeLine.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220421150914_LifeLineInitialCreate")]
+    [Migration("20220421201039_LifeLineInitialCreate")]
     partial class LifeLineInitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -170,10 +170,13 @@ namespace LifeLine.Migrations
 
             modelBuilder.Entity("LifeLine.Models.ShoppingCart", b =>
                 {
-                    b.Property<int>("ListingID")
+                    b.Property<int>("ShoppingCartID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ListingID")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -185,7 +188,7 @@ namespace LifeLine.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("ListingID");
+                    b.HasKey("ShoppingCartID");
 
                     b.ToTable("ShoppingCart");
                 });
