@@ -9,13 +9,16 @@ namespace LifeLine.Models
 {
     public class OrderItems
     {
-        [Key]
+        [Key, Required, Display(Name = "Listing ID")]
         public int ListingID { get; set; }
 
-        public int Quantity { get; set; }
+        [Required]
+        public int Amount { get; set; }
 
-        public decimal Amount { get; set; }
+        [Required]
+        public decimal Price { get; set; }
 
+        [Required]
         public int OrderID { get; set; }
 
     }

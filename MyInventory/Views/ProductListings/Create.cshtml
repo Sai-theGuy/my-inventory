@@ -40,7 +40,14 @@
                     </div>
                     <div class="form-row pb-4">
                         <div class="col-lg-12">
-                            <input asp-for="SupplierID" class="effect-1" placeholder="SupplierID"/>
+                            <input asp-for="SupplierID" class="effect-1" placeholder=""/>
+@*                            <select asp-for="SupplierID" class="effect-1" asp-items="Html.GetEnumSelectList<ItemType>()">
+                               <option value="" disabled selected="selected">
+                                    <span style="color: grey;">
+                                        Supplier ID
+                                    </span>
+                                </option>
+                            </select>*@
                             <span asp-validation-for="SupplierID" class="text-danger"></span>
                         </div>
                     </div>
