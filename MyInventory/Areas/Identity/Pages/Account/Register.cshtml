@@ -20,7 +20,8 @@
         </div>
 
         <!-- Login Form -->
-        <form id="account" method="post">
+         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" id="account">
+            <div asp-validation-summary="All" class="text-danger"></div>    
             <input asp-for="Input.FN" type="text" class="fadeIn second" placeholder="FirstName">
             <input asp-for="Input.LN" type="text" class="fadeIn second" placeholder="LastName">
             <input asp-for="Input.Email" type="text" class="fadeIn second" placeholder="Email">

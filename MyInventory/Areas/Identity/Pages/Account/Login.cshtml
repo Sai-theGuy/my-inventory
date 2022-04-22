@@ -19,6 +19,7 @@
 
         <!-- Login Form -->
         <form id="account" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <input type="text" asp-for="Input.Email" class="fadeIn second" placeholder="Email" />
             <input type="password" asp-for="Input.Password" class="fadeIn third" placeholder="password" />
             <label asp-for="Input.RememberMe">

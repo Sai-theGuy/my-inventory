@@ -34,17 +34,17 @@
                     style="width: 350px; height: 300px; "/>
             </td>
             <td>
-                <input type="text" value="@(item.ProductName)" readonly/>
+                <input type="text" class="form-control" value="@(item.ProductName)" readonly/>
             </td>
             <td>
-                <input type="text" value="@(item.Price)" readonly/>
+                <input type="text" class="form-control" value="@(item.Price)" readonly/>
             </td>
             <td>
                 <input type="hidden" value="@(item.ListingID)" name="id"/>
-                <input type="number" min="0" max="@(item.StocksLeft)" name="quantity" />
+                <input type="number" class="form-control" min="0" max="@(item.StocksLeft)" name="quantity" />
             </td>
             <td>
-                <input type="submit" value="Add to cart" />
+                <input type="submit" class="btn btn-primary" value="Add to cart" />
             </td>
         </tr>
 }   </tbody>

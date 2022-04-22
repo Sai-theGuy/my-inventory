@@ -13,7 +13,7 @@
             <div clas="row">
                 <div class="col-lg-12">
                     <div class="head text-center py-3">
-                        <h3 style="color:white">Update Supplier</h3>
+                        <h3 style="color:white">Add Product</h3>
                     </div>
                 </div>
             </div>
@@ -40,14 +40,7 @@
                     </div>
                     <div class="form-row pb-4">
                         <div class="col-lg-12">
-                            <input asp-for="SupplierID" class="effect-1" placeholder=""/>
-@*                            <select asp-for="SupplierID" class="effect-1" asp-items="Html.GetEnumSelectList<ItemType>()">
-                               <option value="" disabled selected="selected">
-                                    <span style="color: grey;">
-                                        Supplier ID
-                                    </span>
-                                </option>
-                            </select>*@
+                            <input asp-for="SupplierID" class="effect-1" placeholder="Supplier ID"/>
                             <span asp-validation-for="SupplierID" class="text-danger"></span>
                         </div>
                     </div>
