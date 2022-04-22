@@ -141,6 +141,7 @@ namespace LifeLine.Controllers
             return RedirectToAction("ShowCart");
         }
 
+        private static int ID = 0;
         public IActionResult Order()
         {
             var cartItems = _context.ShoppingCart.ToList();
@@ -163,6 +164,7 @@ namespace LifeLine.Controllers
                 return RedirectToAction("ShowCart");
             }
 
+            ID = purchaseOrders.OrderID;
             foreach (var item in cartItems)
             {
                 var newOrderItems = new OrderItems();
@@ -181,7 +183,19 @@ namespace LifeLine.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("ShowCart");
+            return RedirectToAction("Confirmation");
+        }
+
+        public IActionResult Confirmation()
+        {
+            var orders = _context.PurchaseOrders.Where(d => d.OrderID == ID).ToList();
+            var model = new PurchaseOrders();
+            foreach(var item in orders)
+            {
+                model.OrderID = item.OrderID;
+                model.Price = item.Price;
+            }
+            return View(model);
         }
     }
 }
