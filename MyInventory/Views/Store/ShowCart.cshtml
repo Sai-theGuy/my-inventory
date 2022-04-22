@@ -57,19 +57,27 @@
     Submit Cart
 </button>
 
-<div class="modal" id="myModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirm Payment</h5>
-            </div>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Order Confirmation</h4>
         </div>
+        
+        <!-- Modal body -->
         <div class="modal-body">
-            <p>Are you finished with adding products to your cart?</p>
+          <h5>Your order will be processed if you would confirm. Would you like to proceed? </h5>
         </div>
+        
+        <!-- Modal footer -->
         <div class="modal-footer">
             <a asp-action="Order" asp-controller="Store" class="btn btn-primary">Confirm</a>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Not yet</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Not yet</button>
         </div>
+        
+      </div>
     </div>
-</div>
+  </div>

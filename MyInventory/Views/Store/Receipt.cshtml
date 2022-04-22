@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LifeLine.Models.PurchaseOrders>
+﻿@model LifeLine.Models.PurchaseOrders
 
 @{
     Layout = null;
@@ -39,12 +39,12 @@
                         <td class="totalprice"><h2>Total Price:</h2></td>
                     </tr>
                     <tr class="output">
-                        <td class="tableitem"><p class="idoutput"></p></td>
-                        <td class="tableitem"><p class="priceoutput"></p></td>
+                        <td class="tableitem"><p class="idoutput"></p> @Html.DisplayFor(model => model.OrderID) </td>
+                        <td class="tableitem"><p class="priceoutput"> @Html.DisplayFor(model => model.Price) </p></td>
                     </tr>
                 </table>
             </div>
-            <button type="submit" id="btn1" class="btn1">Back to Homepage</button>
+            <a asp-action="Index" asp-controller="Home" class="btn1" id="btn1">Back to Homepage</a>
         </div>
     </div>
 </body>

@@ -183,10 +183,10 @@ namespace LifeLine.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Confirmation");
+            return RedirectToAction("Receipt");
         }
 
-        public IActionResult Confirmation()
+        public IActionResult Receipt()
         {
             var orders = _context.PurchaseOrders.Where(d => d.OrderID == ID).ToList();
             var model = new PurchaseOrders();
