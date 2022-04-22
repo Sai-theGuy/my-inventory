@@ -8,8 +8,10 @@ using System.ComponentModel.DataAnnotations;
 namespace LifeLine.Models
 {
     public class OrderItems
-    {
-        [Key, Required, Display(Name = "Listing ID")]
+    {   
+        [Key]
+        public int Id { get; set; }
+        [Required, Display(Name = "Listing ID")]
         public int ListingID { get; set; }
 
         [Required]
@@ -22,6 +24,4 @@ namespace LifeLine.Models
         public int OrderID { get; set; }
 
     }
-
-
 }

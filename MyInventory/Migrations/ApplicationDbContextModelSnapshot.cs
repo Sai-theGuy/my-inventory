@@ -92,12 +92,15 @@ namespace LifeLine.Migrations
 
             modelBuilder.Entity("LifeLine.Models.OrderItems", b =>
                 {
-                    b.Property<int>("ListingID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ListingID")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderID")
@@ -106,7 +109,7 @@ namespace LifeLine.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("ListingID");
+                    b.HasKey("Id");
 
                     b.ToTable("OrderItems");
                 });

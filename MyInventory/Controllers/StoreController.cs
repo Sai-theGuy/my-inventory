@@ -143,8 +143,45 @@ namespace LifeLine.Controllers
 
         public IActionResult Order()
         {
+            var cartItems = _context.ShoppingCart.ToList();
+            if (cartItems == null)
+            {
+                return RedirectToAction("ShowCart");
+            }
+            var newPurchaseOrder = new PurchaseOrders();
+            foreach(var item in cartItems)
+            {
+                newPurchaseOrder.Price += item.Price;
+            }
+            _context.PurchaseOrders.Add(newPurchaseOrder);
+            _context.SaveChanges();
 
-            return View();
+            var purchaseOrders = _context.PurchaseOrders
+                .OrderByDescending(i => i.OrderID).FirstOrDefault();
+            if (purchaseOrders == null)
+            {
+                return RedirectToAction("ShowCart");
+            }
+
+            foreach (var item in cartItems)
+            {
+                var newOrderItems = new OrderItems();
+                newOrderItems.ListingID = item.ListingID;
+                newOrderItems.Amount = item.Quantity;
+                newOrderItems.Price = item.Price;
+                newOrderItems.OrderID = purchaseOrders.OrderID;
+                _context.OrderItems.Add(newOrderItems);
+                _context.SaveChanges();
+            }
+
+            var shoppingCart = _context.ShoppingCart.ToList();
+            foreach (var shoppingCartItem in shoppingCart)
+            {
+                _context.ShoppingCart.Remove(shoppingCartItem);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("ShowCart");
         }
     }
 }
