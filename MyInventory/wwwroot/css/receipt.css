@@ -58,15 +58,13 @@ table {
 }
 
 .btn1 {
+    display: block; 
     background: #385ce4;
     color: white;
     outline: none;
-    border: none;
     border-radius: 25px;
-    height: 40px;
-    width: 150px;
-    margin-left: 30%;
-    line-height: 5px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 15px;
     text-align: center;
 }

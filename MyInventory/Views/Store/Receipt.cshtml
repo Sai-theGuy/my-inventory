@@ -22,7 +22,7 @@
         <div id="mid">
             <div class="info">
                 <p>
-                    Thank you! Your payment has been sucessful.
+                    Thank you! Your transaction has been sucessful.
                 </p>
             </div>
         </div>
@@ -32,19 +32,23 @@
 
             <div id="table">
                 <table>
-                    <tr class="tabletitle">
-                        <th>
-                         
-                        </th>
+                    <tr class="output">
                         <td class="totalprice"><h2>Total Price:</h2></td>
+                        <td class="tableitem"><h3 class="priceoutput"> @Html.DisplayFor(model => model.Price) </h3></td>
                     </tr>
                     <tr class="output">
-                        <td class="tableitem"><p class="idoutput"></p> @Html.DisplayFor(model => model.OrderID) </td>
-                        <td class="tableitem"><p class="priceoutput"> @Html.DisplayFor(model => model.Price) </p></td>
+                        <td class="totalprice"><h2> @Html.DisplayNameFor(model => model.OrderID) </h2></td>
+                        <td class="tableitem"><h3 class="idoutput">@Html.DisplayFor(model => model.OrderID)</h3> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div style="width:100%; padding-left:15%; padding-right:15%; padding-top:10%; padding-bottom:10%;">
+                                <a asp-action="Index" asp-controller="Home" class="btn btn1">Back to Homepage</a>
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>
-            <a asp-action="Index" asp-controller="Home" class="btn1" id="btn1">Back to Homepage</a>
         </div>
     </div>
 </body>
