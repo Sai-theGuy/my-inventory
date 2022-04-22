@@ -4,6 +4,11 @@
     ViewData["Title"] = "ShowCart";
 }
 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 <h1>ShowCart</h1>
 
 <table class="table">
@@ -25,29 +30,46 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ListingID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-controller="Store" asp-route-id="@item.ShoppingCartID">Edit</a> |
-                <a asp-action="Delete" asp-controller="Store" asp-route-id="@item.ShoppingCartID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListingID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Store" asp-route-id="@item.ShoppingCartID">Edit</a> |
+                    <a asp-action="Delete" asp-controller="Store" asp-route-id="@item.ShoppingCartID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-<p>
-    <a asp-action="Order" asp-controller="Store">Submit Order</a>
-</p>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Submit Cart
+</button>
 
+<div class="modal" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Payment</h5>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p>Are you finished with adding products to your cart?</p>
+        </div>
+        <div class="modal-footer">
+            <a asp-action="Order" asp-controller="Store" class="btn btn-primary">Confirm</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Not yet</button>
+        </div>
+    </div>
+</div>
