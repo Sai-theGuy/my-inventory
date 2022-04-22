@@ -1,4 +1,4 @@
-USE [LifelineMedical(Actual)]
+USE [LifelineMedical]
 GO
 
 CREATE TRIGGER TriggerInsertSuppliers ON Suppliers
